@@ -18,7 +18,7 @@ namespace Aegis
         {
             pnlDefault.Visible = false;
             pnlCreate.Visible = true;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:50364/AegisService.svc/GetSecQuestions");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://aegisservice20190412102455.azurewebsites.net/AegisService.svc/GetSecQuestions");
             HttpWebResponse response = request.GetResponse() as HttpWebResponse;
             Stream stream = response.GetResponseStream();
             StreamReader reader = new StreamReader(stream);
@@ -39,7 +39,7 @@ namespace Aegis
             user.UserName = txtUName.Text;
             Encrypt en = new Encrypt();
             user.Password = en.Convert(txtPword.Text).ToString();
-            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:50364/AegisService.svc/ValidateUser/" + user.UserName + "/" + user.Password);
+            HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://aegisservice20190412102455.azurewebsites.net/AegisService.svc/ValidateUser/" + user.UserName + "/" + user.Password);
             HttpWebResponse response = (HttpWebResponse)req.GetResponse();
             using (var streamReader = new StreamReader(response.GetResponseStream()))
             {
@@ -121,7 +121,7 @@ namespace Aegis
                 user.SecQuestion1 = Convert.ToInt32(ddlSecurityQuestion1.SelectedValue.ToString());
                 user.SecQuestion2 = Convert.ToInt32(ddlSecurityQuestion2.SelectedValue.ToString());
                 string obj = JsonConvert.SerializeObject(user);
-                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:50364/AegisService.svc/PostUser");
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://aegisservice20190412102455.azurewebsites.net/AegisService.svc/PostUser");
                 req.Method = "POST";
                 req.ContentType = "application/json";
                 using (var streamWriter = new StreamWriter(req.GetRequestStream()))

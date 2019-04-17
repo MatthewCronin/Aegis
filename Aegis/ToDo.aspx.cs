@@ -147,7 +147,7 @@ namespace Aegis
                 todo.Completed = Convert.ToBoolean(rblCompletedEdit.SelectedValue);
                 string obj = JsonConvert.SerializeObject(todo);
                 //aegisservice20190412102455.azurewebsites.net
-                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:50364/AegisService.svc/PutToDo");
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://aegisservice20190412102455.azurewebsites.net/AegisService.svc/PutToDo");
                 req.Method = "PUT";
                 req.ContentType = "application/json";
                 req.ContentLength = obj.Length;
@@ -185,7 +185,7 @@ namespace Aegis
                 todo.UpdatedBy = Convert.ToInt32(lblUserID.Text);
                 string obj = JsonConvert.SerializeObject(todo);
                 //aegisservice20190412102455.azurewebsites.net
-                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:50364/AegisService.svc/CompleteToDo");
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://aegisservice20190412102455.azurewebsites.net/AegisService.svc/CompleteToDo");
                 req.Method = "PUT";
                 req.ContentType = "application/json";
                 req.ContentLength = obj.Length;
@@ -222,7 +222,7 @@ namespace Aegis
                 todo.Disabled = Convert.ToBoolean(rblConfirmDisable.SelectedValue);
                 string obj = JsonConvert.SerializeObject(todo);
                 //aegisservice20190412102455.azurewebsites.net
-                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://localhost:50364/AegisService.svc/DisableToDo");
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create("http://aegisservice20190412102455.azurewebsites.net/AegisService.svc/DisableToDo");
                 req.Method = "PUT";
                 req.ContentType = "application/json";
                 req.ContentLength = obj.Length;
@@ -353,7 +353,7 @@ namespace Aegis
         {
             //Fill Grid
             //aegisservice20190412102455.azurewebsites.net
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:50364/AegisService.svc/GetToDos/" + ID.ToString());
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://aegisservice20190412102455.azurewebsites.net/AegisService.svc/GetToDos/" + ID.ToString());
             HttpWebResponse response = request.GetResponse() as HttpWebResponse;
             Stream stream = response.GetResponseStream();
             StreamReader reader = new StreamReader(stream);
@@ -365,7 +365,7 @@ namespace Aegis
         }
         public ToDoClass GetToDo(int ToDoID)
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:50364/AegisService.svc/GetToDo/" + ToDoID);
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://aegisservice20190412102455.azurewebsites.net/AegisService.svc/GetToDo/" + ToDoID);
             HttpWebResponse response = request.GetResponse() as HttpWebResponse;
             Stream stream = response.GetResponseStream();
             StreamReader reader = new StreamReader(stream);
